@@ -11,7 +11,6 @@
 import numpy as np
 import sounddevice as sd
 import pygame as pg
-import matplotlib as plt
 from sprite import Sprite
 
 def gerar_onda_seno(frequencia: float, duracao: float, amplitude: float = 0.5, taxa_de_amostragem = 44100):
@@ -25,7 +24,6 @@ def gerar_onda_serra(frequencia: float, duracao: float, amplitude: float = 0.5, 
     for k in range(1, num_harmonicos + 1): 
         termo = (-1 ** k) * (np.sin(2 * np.pi * k * frequencia * vet) / k)
         vet_serra += termo
-        # plt.plot(vet, (2 / np.pi) * vet_serra, label=f'Harmônico {k}')
     return vet_serra * (2/np.pi)
 
 
