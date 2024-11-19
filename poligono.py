@@ -20,10 +20,10 @@ class Poligono():
                 (self.x, self.y + 114)], #(26, 115), 
 
             3: [(self.x + 13, self.y), 
-                (self.x + 13 + 26, self.y), 
-                (self.x + 13 + 26, self.y + 115), 
-                (self.x + 13 + 26 + 13, self.y + 115), 
-                (self.x + 13 + 26 + 13, self.y + 200), 
+                (self.x + 13 + 29, self.y), 
+                (self.x + 13 + 29, self.y + 115), 
+                (self.x + 13 + 29 + 13, self.y + 115), 
+                (self.x + 13 + 29 + 13, self.y + 200), 
                 (self.x, self.y + 200), 
                 (self.x, self.y + 115), 
                 (self.x + 13, self.y + 115)], #(13,  85)
@@ -52,6 +52,21 @@ class Poligono():
             5: 55, 
         }
         return incremento[self.cod_poligono]
+
+
+    def area_botoes(self):
+        areas = {
+            1: (((self.x, self.x + 55), (self.y + 115, self.y + 200)), ((self.x, self.x + 42), (self.y, self.y + 115))), 
+            2: (((self.x, self.x + 26), (self.y, self.y + 114)), ((self.x, self.x + 26), (self.y, self.y + 114))), 
+            3: (((self.x, self.x + 55), (self.y + 115, self.y + 200)), ((self.x + 13, self.x + 39), (self.y, self.y + 115))),
+            4: (((self.x, self.x + 55), (self.y + 115, self.y + 200)), ((self.x + 13, self.x + 55), (self.y, self.y + 115))), 
+            5: (((self.x, self.x + 55), (self.y, self.y + 200)), ((self.x, self.x + 55), (self.y, self.y + 200)))
+        }
+        return areas[self.cod_poligono]
+    
+
+    def print_info(self):
+        print(f"{self.cod_poligono =} \n {self.x = } \n {self.y =}")
         
 
         
