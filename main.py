@@ -11,7 +11,7 @@
 import numpy as np
 import sounddevice as sd
 import pygame as pg
-from sprite import Sprite
+from poligono import Poligono
 
 def gerar_onda_seno(frequencia: float, duracao: float, amplitude: float = 0.5, taxa_de_amostragem = 44100):
     vet = np.linspace(0, duracao, int(taxa_de_amostragem * duracao), endpoint = False)
@@ -87,29 +87,28 @@ running = True
 
 # Define a posição inicial do sprite
 eixo_x = 330
-eixo_y = 150
+eixo_y = 200
 
-sprite1 = Sprite(1, eixo_x, eixo_y)
-eixo_x += sprite1.largura
-sprite2 = Sprite(2, eixo_x, eixo_y)
-sprite3 = Sprite(3, eixo_x, eixo_y + sprite2.altura)
-eixo_x += sprite3.largura
-sprite4 = Sprite(3, eixo_x, eixo_y + sprite2.altura)
-eixo_x += sprite3.largura
-sprite5 = Sprite(4, eixo_x, eixo_y)
-eixo_x += sprite5.largura
-sprite6 = Sprite(2, eixo_x, eixo_y)
-sprite7 = Sprite(3, eixo_x, eixo_y + sprite2.altura)
-eixo_x += sprite3.largura
-sprite8 = Sprite(3, eixo_x, eixo_y + sprite2.altura)
-eixo_x += sprite3.largura
-sprite9 = Sprite(1, eixo_x, eixo_y)
 
 font = pg.font.Font(None, 48)
 texto_beta = font.render("Isso é uma BETA", True, (255, 0, 0))
 font = pg.font.Font(None, 24)
 texto_versao = font.render("Piano-Python 0.2", True, (255, 0, 0))
+cor_borda = (146, 148, 150)
 
+
+poli1 = Poligono(1, eixo_x, eixo_y)
+eixo_x += poli1.inc_eixo_x()
+poli2 = Poligono(2, eixo_x, eixo_y)
+eixo_x += poli2.inc_eixo_x()
+poli3 = Poligono(3, eixo_x, eixo_y)
+eixo_x += poli3.inc_eixo_x()
+poli4 = Poligono(2, eixo_x, eixo_y)
+eixo_x += poli4.inc_eixo_x()
+poli5 = Poligono(4, eixo_x, eixo_y)
+eixo_x += poli5.inc_eixo_x()
+poli6 = Poligono(1, eixo_x, eixo_y)
+eixo_x += poli6.inc_eixo_x()
 
 while running:
     # pg.QUIT() é quando o usuário fecha a janela
@@ -121,15 +120,25 @@ while running:
 
     screen.fill((166, 156, 149))
 
-    screen.blit(sprite1.image, (sprite1.x, sprite1.y))
-    screen.blit(sprite2.image, (sprite2.x, sprite2.y))
-    screen.blit(sprite3.image, (sprite3.x, sprite3.y))
-    screen.blit(sprite4.image, (sprite4.x, sprite4.y))
-    screen.blit(sprite5.image, (sprite5.x, sprite5.y))
-    screen.blit(sprite6.image, (sprite6.x, sprite6.y))
-    screen.blit(sprite7.image, (sprite7.x, sprite7.y))
-    screen.blit(sprite8.image, (sprite8.x, sprite8.y))
-    screen.blit(sprite9.image, (sprite9.x, sprite9.y))
+    pg.draw.polygon(screen, (255, 255, 255), poli1.get_pontos())
+    pg.draw.polygon(screen, cor_borda, poli1.get_pontos(), width = 1)
+
+    
+
+    pg.draw.polygon(screen, (255, 255, 255), poli3.get_pontos())
+    pg.draw.polygon(screen, cor_borda, poli3.get_pontos(), width = 1)
+
+
+    pg.draw.polygon(screen, (255, 255, 255), poli5.get_pontos())
+    pg.draw.polygon(screen, cor_borda, poli5.get_pontos(), width = 1)
+
+    pg.draw.polygon(screen, (255, 255, 255), poli6.get_pontos())
+    pg.draw.polygon(screen, cor_borda, poli6.get_pontos(), width = 1)
+
+    pg.draw.polygon(screen, (0, 0, 0), poli4.get_pontos())
+
+    pg.draw.polygon(screen, (0, 0, 0), poli2.get_pontos())
+
     # textos
 
     screen.blit(texto_beta, (540, 600))
