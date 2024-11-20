@@ -1,6 +1,8 @@
 import sounddevice as sd
 import numpy as np
 
+# ainda não está funcionando, só a função de calculo de frequencia e a de gerar a onda
+
 
 def gerar_onda_seno(frequencia: float, duracao: float, amplitude: float = 0.5, taxa_de_amostragem = 44100):
     vet = np.linspace(0, duracao, int(taxa_de_amostragem * duracao), endpoint = False)

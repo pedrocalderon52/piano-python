@@ -5,7 +5,9 @@ class Poligono():
         self.x = x
         self.y = y
 
-    def get_pontos(self) -> list:
+
+    def get_pontos(self) -> list[tuple]:
+        """ retorna uma lista de pontos (relativos) que o polígono possui, com base no código identificador dele"""
         pontos = {
             1: [(self.x, self.y), 
                 (self.x, self.y + 200), 
@@ -43,18 +45,8 @@ class Poligono():
         return pontos[self.cod_poligono]
     
 
-    def inc_eixo_x(self) -> int:
-        incremento = { # o quanto o eixo x é incrementado após cada tecla ser criada
-            1: 42, 
-            2: 13,
-            3: 39, 
-            4: 55,
-            5: 55, 
-        }
-        return incremento[self.cod_poligono]
-
-
-    def area_botoes(self):
+    def area_botoes(self) -> tuple[tuple]:
+        """divide cada polígono em 2 retângulos e retorna os delimitadores de área, para realizar a implementação de um botão """
         areas = {
             1: (((self.x, self.x + 55), (self.y + 115, self.y + 200)), ((self.x, self.x + 42), (self.y, self.y + 115))), 
             2: (((self.x, self.x + 26), (self.y, self.y + 114)), ((self.x, self.x + 26), (self.y, self.y + 114))), 
@@ -66,6 +58,11 @@ class Poligono():
     
 
     def print_info(self):
+        """printa na tela as informações do polígono, para facilitar o debugging
+        cod_polígono = 
+        x =
+        y =
+        """
         print(f"{self.cod_poligono =} \n {self.x = } \n {self.y =}")
         
 
