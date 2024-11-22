@@ -64,8 +64,13 @@ class Poligono():
         y =
         """
         print(f"{self.cod_poligono =} \n {self.x = } \n {self.y =}")
-        
 
-        
+    
+    def __repr__(self) -> str:
+        return f"Objeto polígono: cod_poligono={self.cod_poligono}; (x, y) = ({self.x}, {self.y}); cor = {"preto" if self.cod_poligono == 2 else "branco"} \n"
+    
+
+    
+    
         
         
