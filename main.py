@@ -33,6 +33,7 @@ def desenhar_poligono(surface, cor_tecla: tuple, cor_hover: tuple, poli: Poligon
 # interface pygame
 
 pg.init() # iniciando pygame
+pg.display.set_caption("Piano Python")
 
 screen = pg.display.set_mode((1280, 720))
 clock = pg.time.Clock() # define a taxa de FPS
@@ -44,10 +45,8 @@ eixo_x: float = 173
 eixo_y: int = 200
 
 
-font = pg.font.Font(None, 48)
-texto_beta = font.render("BETA", True, (255, 0, 0))
 font = pg.font.Font(None, 24)
-texto_versao = font.render("Piano-Python 0.2", True, (255, 0, 0))
+texto_versao = font.render("Piano-Python 1.0", True, (255, 0, 0))
 
 
 padrao_cores_tecla = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0] # 0 significa branco e 1 significa preto
@@ -88,7 +87,6 @@ del lista_negra
 #################                   MAIN                    ##########################
 ######################################################################################
 
-
 while running:
     mouse = pg.mouse.get_pos()
     # pg.QUIT() é quando o usuário fecha a janela
@@ -103,7 +101,7 @@ while running:
                 if esta_dentro_botao(mouse, tecla):
                     i_nota = i
             if i_nota != -1: #depois arrumar um jeito de colocar as notas dentro da classe, se vira mlk
-                nota_ataque = Nota(notas[i_nota], 0.25, 0.5, 44100)
+                nota_ataque = Nota(notas[i_nota], 0.5, 0.5, 44100)
                 nota_ataque.tocar_nota(nota_ataque.gerar_onda_seno())
         
     screen.fill((176, 176, 106))
@@ -114,9 +112,8 @@ while running:
     for tecla in teclas_pretas:
         desenhar_poligono(screen, (0, 0, 0), (100, 100, 110), tecla, branco = False)
 
-    # textos
+    # texto  
 
-    screen.blit(texto_beta, (540, 600))
     screen.blit(texto_versao, (30, 700))
     pg.display.flip()
 
